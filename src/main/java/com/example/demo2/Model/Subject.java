@@ -1,7 +1,6 @@
 package com.example.demo2.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonAppend;
 
 import javax.persistence.*;
 
@@ -14,10 +13,10 @@ public class Subject {
     private String nameSubject;
     private String professor;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "subject")
-    private Mark marks;
+    @OneToOne( cascade = CascadeType.ALL, mappedBy = "subject")
+    private Mark mark;
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},  fetch = FetchType.LAZY)
+    @ManyToOne(  fetch = FetchType.EAGER)
     private Student student;
 
     public Subject() {
@@ -28,10 +27,10 @@ public class Subject {
         this.professor = professor;
     }
 
-    public Subject(String nameSubject, String professor, Mark marks) {
+    public Subject(String nameSubject, String professor, Mark mark) {
         this.nameSubject = nameSubject;
         this.professor = professor;
-        this.marks = marks;
+        this.mark = mark;
     }
 
     public String getNameSubject() {
@@ -50,12 +49,12 @@ public class Subject {
         this.professor = professor;
     }
 
-    public Mark getMarks() {
-        return marks;
+    public Mark getMark() {
+        return mark;
     }
 
-    public void setMarks(Mark marks) {
-        this.marks = marks;
+    public void setMark(Mark marks) {
+        this.mark = marks;
     }
 
     public Student getStudent() {

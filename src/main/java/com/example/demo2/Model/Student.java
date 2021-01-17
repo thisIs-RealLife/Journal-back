@@ -1,9 +1,12 @@
 package com.example.demo2.Model;
 
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 
@@ -15,20 +18,21 @@ public class Student {
     private Long id;
 
     @NotBlank(message = "Please fill the name")
-    @Length(max = 200, message = "Message too long")
+    @Length(max = 200, message = "name too long")
     private String name;
 
     @NotBlank(message = "Please fill the surname")
-    @Length(max = 200, message = "Message too long")
-    private String surName;
+    @Length(max = 200, message = "surname too long")
+    private String surname;
 
+    @Range(max = 150, min = 16, message = "Error in the \"age\" field")
     private int age;
 
     @NotBlank(message = "Please fill the password")
-    @Length(max = 200, message = "Message too long")
+    @Length(max = 200, message = "password too long")
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "student", fetch = FetchType.LAZY)
+    @OneToMany( cascade = {CascadeType.REMOVE, CascadeType.DETACH}, mappedBy = "student", fetch = FetchType.EAGER)
     private List<Subject> subjects;
 
     public Student() {
@@ -37,14 +41,14 @@ public class Student {
     public Student(Long id, String name, String surName, int age, String password) {
         this.id = id;
         this.name = name;
-        this.surName = surName;
+        this.surname = surName;
         this.age = age;
         this.password = password;
     }
 
     public Student(@NotBlank(message = "Please fill the name") @Length(max = 200, message = "Message too long") String name, @NotBlank(message = "Please fill the name") @Length(max = 200, message = "Message too long") String surName, int age, @NotBlank(message = "Please fill the name") @Length(max = 200, message = "Message too long") String password) {
         this.name = name;
-        this.surName = surName;
+        this.surname = surName;
         this.age = age;
         this.password = password;
     }
@@ -65,12 +69,12 @@ public class Student {
     }
 
 
-    public String getSurName() {
-        return surName;
+    public String getSurname() {
+        return surname;
     }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
+    public void setSurname(String surName) {
+        this.surname = surName;
     }
 
 

@@ -9,7 +9,7 @@ public class Mark {
     private Long id;
     private int mark;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private Subject subject;
 
     public Mark() {
