@@ -4,9 +4,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.List;
 
 
@@ -32,7 +30,7 @@ public class Student {
     @Length(max = 200, message = "password too long")
     private String password;
 
-    @OneToMany( cascade = {CascadeType.REMOVE, CascadeType.DETACH}, mappedBy = "student", fetch = FetchType.EAGER)
+    @OneToMany( cascade = CascadeType.ALL, mappedBy = "student", orphanRemoval = true)
     private List<Subject> subjects;
 
     public Student() {

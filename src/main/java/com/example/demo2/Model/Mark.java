@@ -9,7 +9,7 @@ public class Mark {
     private Long id;
     private int mark;
 
-    @OneToOne
+    @OneToOne()
     private Subject subject;
 
     public Mark() {
@@ -29,5 +29,9 @@ public class Mark {
 
     public void setMark(int mark) {
         this.mark = mark;
+    }
+
+    public Long getId() {
+        return id;
     }
 }

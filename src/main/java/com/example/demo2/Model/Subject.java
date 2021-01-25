@@ -1,8 +1,10 @@
 package com.example.demo2.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @JsonIgnoreProperties("student")
@@ -10,10 +12,16 @@ public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @NotBlank(message = "Please fill the name")
+    @Length(max = 200, message = "name too long")
     private String nameSubject;
+
+    @NotBlank(message = "Please fill the name")
+    @Length(max = 200, message = "name too long")
     private String professor;
 
-    @OneToOne( cascade = CascadeType.ALL, mappedBy = "subject")
+    @OneToOne( cascade = CascadeType.ALL, mappedBy = "subject", orphanRemoval = true)
     private Mark mark;
 
     @ManyToOne(  fetch = FetchType.EAGER)
@@ -55,6 +63,7 @@ public class Subject {
 
     public void setMark(Mark marks) {
         this.mark = marks;
+        marks.setSubject(this);
     }
 
     public Student getStudent() {
