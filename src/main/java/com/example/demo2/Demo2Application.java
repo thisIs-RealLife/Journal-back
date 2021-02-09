@@ -14,10 +14,7 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class Demo2Application implements CommandLineRunner{
-	/*@Autowired
-	private SubjectRepo subjectRepo;
-	@Autowired
-	private StudentRepo studentRepo;*/
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(Demo2Application.class, args);
@@ -26,11 +23,6 @@ public class Demo2Application implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-	/*	Student student= studentRepo.findById((long) 1).get();
-		Subject subject = new Subject("Math", "Popov");
-		Mark mark = new Mark(5);
-		subject.setMarks(mark);
-		student.setSubjects(Arrays.asList(subject));
-		studentRepo.save(student);*/
+
 	}
 }

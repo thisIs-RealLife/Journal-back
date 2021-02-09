@@ -1,8 +1,8 @@
 package com.example.demo2.Controller;
 
 import com.example.demo2.Model.Subject;
-import com.example.demo2.Service.StudentService;
-import com.example.demo2.Service.SubjectService;
+import com.example.demo2.Service.ServiceRepo.StudentService;
+import com.example.demo2.Service.ServiceRepo.SubjectService;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,8 +34,8 @@ public class SubjectController {
                                               BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity(bindingResult.getFieldError().
-                    getDefaultMessage(), HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity(bindingResult.getFieldError()
+                    .getDefaultMessage(), HttpStatus.NOT_ACCEPTABLE);
         }
 
         try {
@@ -58,8 +58,8 @@ public class SubjectController {
                                                  BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity(bindingResult.getFieldError().
-                    getDefaultMessage(), HttpStatus.NOT_ACCEPTABLE);
+            return new ResponseEntity(bindingResult.getFieldError()
+                    .getDefaultMessage(), HttpStatus.NOT_ACCEPTABLE);
         }
 
         try {

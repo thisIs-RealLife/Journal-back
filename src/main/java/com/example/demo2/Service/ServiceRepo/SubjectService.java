@@ -1,4 +1,4 @@
-package com.example.demo2.Service;
+package com.example.demo2.Service.ServiceRepo;
 
 import com.example.demo2.Model.Student;
 import com.example.demo2.Model.Subject;
